@@ -49,10 +49,6 @@ class Instance:
             "plan": plan,
             "image": image,
             "pod_num": pod_num,
-<<<<<<< HEAD
-=======
-            
->>>>>>> private-repo/main
             "area": area or [],
             "conf": conf or {},
             **kwargs

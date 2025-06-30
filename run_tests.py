@@ -37,31 +37,31 @@ def main():
     os.chdir(project_root)
     
     # Python可执行文件路径
-    python_exe = r".\submodel-env\Scripts\python.exe"
+    python_cmd = r"python"
     
     print("🚀 SubModel SDK 测试套件")
     print("=" * 60)
     
     # 1. 检查pytest版本
-    run_command(f"{python_exe} -m pytest --version", "检查pytest版本")
+    run_command(f"{python_cmd} -m pytest --version", "检查pytest版本")
     
     # 2. 收集所有测试
-    run_command(f"{python_exe} -m pytest --collect-only -q", "收集所有测试")
+    run_command(f"{python_cmd} -m pytest --collect-only -q", "收集所有测试")
     
     # 3. 运行单个测试文件
-    run_command(f"{python_exe} -m pytest tests/test_auth.py -v", "运行认证测试")
+    run_command(f"{python_cmd} -m pytest tests/test_auth.py -v", "运行认证测试")
     
     # 4. 运行异步测试
-    run_command(f"{python_exe} -m pytest tests/test_async_client.py -v", "运行异步客户端测试")
+    run_command(f"{python_cmd} -m pytest tests/test_async_client.py -v", "运行异步客户端测试")
     
     # 5. 运行所有测试（简化输出）
-    run_command(f"{python_exe} -m pytest tests/ --tb=line", "运行所有测试（简化输出）")
+    run_command(f"{python_cmd} -m pytest tests/ --tb=line", "运行所有测试（简化输出）")
     
     # 6. 生成覆盖率报告
-    run_command(f"{python_exe} -m pytest tests/ --cov=submodel --cov-report=term", "生成代码覆盖率报告")
+    run_command(f"{python_cmd} -m pytest tests/ --cov=submodel --cov-report=term", "生成代码覆盖率报告")
     
     # 7. 运行特定标记的测试（如果配置了标记）
-    run_command(f"{python_exe} -m pytest tests/ -k auth", "运行包含'auth'的测试")
+    run_command(f"{python_cmd} -m pytest tests/ -k auth", "运行包含'auth'的测试")
     
     print("\n🎉 测试完成！")
     print("=" * 60)

@@ -130,10 +130,6 @@ class TestInstance(unittest.TestCase):
         self.assertEqual(str(context.exception), "Instance not found")
 
     @patch('requests.request')
-<<<<<<< HEAD
-    def test_get_pod_logs(self, mock_request):
-        """Test get container logs"""
-=======
     def test_delete_instance(self, mock_request):
         """Test instance deletion"""
         mock_response = MagicMock()
@@ -156,35 +152,19 @@ class TestInstance(unittest.TestCase):
     @patch('requests.request')
     def test_get_pods(self, mock_request):
         """Test get instance pods"""
->>>>>>> private-repo/main
         mock_response = MagicMock()
         mock_response.status_code = 200
         mock_response.json.return_value = {
             "code": 20000,
             "data": {
-<<<<<<< HEAD
-                "logs": "Container logs..."
-=======
                 "pods": [
                     {"pod_id": "pod-1", "status": "running"},
                     {"pod_id": "pod-2", "status": "pending"}
                 ]
->>>>>>> private-repo/main
             }
         }
         mock_request.return_value = mock_response
 
-<<<<<<< HEAD
-        result = self.instance.get_pod_logs("inst-id", "pod-id")
-        self.assertEqual(result["code"], 20000)
-        self.assertIn("logs", result["data"])
-        
-        # Verify request path
-        mock_request.assert_called_once()
-        args, kwargs = mock_request.call_args
-        self.assertIn("inst-id", args[1])
-        self.assertIn("pod-id", args[1])
-=======
         result = self.instance.get_pods("test-inst-id")
         self.assertEqual(result["code"], 20000)
         self.assertEqual(len(result["data"]["pods"]), 2)
@@ -394,7 +374,6 @@ class TestInstance(unittest.TestCase):
         self.assertEqual(json_data["timeout"], 300)
         self.assertEqual(json_data["env_vars"]["NODE_ENV"], "production")
         self.assertEqual(json_data["working_dir"], "/app")
->>>>>>> private-repo/main
 
 if __name__ == '__main__':
     unittest.main()

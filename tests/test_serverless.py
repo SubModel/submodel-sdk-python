@@ -1,10 +1,7 @@
 import unittest
-<<<<<<< HEAD
-from unittest.mock import patch, MagicMock
-=======
 import json
 from unittest.mock import patch, MagicMock, Mock
->>>>>>> private-repo/main
+
 import time
 import requests
 from submodel.sdk.client import create_client
@@ -17,8 +14,6 @@ class TestServerlessHandler(unittest.TestCase):
     def setUp(self):
         self.handler = ServerlessHandler()
     
-<<<<<<< HEAD
-=======
     def test_init(self):
         """Test ServerlessHandler initialization"""
         handler = ServerlessHandler()
@@ -26,7 +21,6 @@ class TestServerlessHandler(unittest.TestCase):
         self.assertIsNone(handler._inst_id)
         self.assertEqual(handler._max_iterations, 100)
     
->>>>>>> private-repo/main
     def test_handler_decorator(self):
         """Test handler decorator"""
         @self.handler.handler
@@ -34,11 +28,7 @@ class TestServerlessHandler(unittest.TestCase):
             return {"result": "success"}
         
         self.assertEqual(self.handler._handler, test_func)
-<<<<<<< HEAD
-    
-    def test_instance_required(self):
-        """Test instance ID requirement"""
-=======
+
         # Test decorator returns the original function
         self.assertEqual(test_func({"test": "data"}), {"result": "success"})
     
@@ -54,32 +44,10 @@ class TestServerlessHandler(unittest.TestCase):
     
     def test_start_no_instance(self):
         """Test start method without instance ID"""
->>>>>>> private-repo/main
         @self.handler.handler
         def test_func(job):
             return {"result": "success"}
             
-<<<<<<< HEAD
-        with self.assertRaises(ValueError):
-            self.handler.start()
-            
-    @patch('builtins.print')
-    def test_handler_execution(self, mock_print):
-        """Test handler execution"""
-        @self.handler.handler
-        def test_func(job):
-            return {"result": job["input"]["test"]}
-            
-        self.handler.set_instance("test-instance")
-        
-        # Mock environment variables
-        with patch.dict(os.environ, {'SUBMODEL_INPUT': '{"input":{"test":"data"}}'}):
-            self.handler._get_job_input()
-            result = self.handler._handler({"input": {"test": "data"}})
-            self.handler._return_result(result)
-            
-        mock_print.assert_called_once_with('{"output": {"result": "data"}}')
-=======
         with self.assertRaises(ValueError) as context:
             self.handler.start()
         self.assertIn("Instance ID not set", str(context.exception))
@@ -259,22 +227,18 @@ class TestServerlessHandler(unittest.TestCase):
         
         # Check that error was printed
         mock_print.assert_called_with('{"error": "Handler failed"}')
->>>>>>> private-repo/main
 
 class TestServerlessEndpoint(unittest.TestCase):
     def setUp(self):
         self.client = create_client(token="test-token")
         self.endpoint = ServerlessEndpoint(self.client, "test-instance")
         
-<<<<<<< HEAD
-=======
     def test_init(self):
         """Test ServerlessEndpoint initialization"""
         endpoint = ServerlessEndpoint(self.client, "test-instance-123")
         self.assertEqual(endpoint.client, self.client)
         self.assertEqual(endpoint.inst_id, "test-instance-123")
         
->>>>>>> private-repo/main
     @patch('requests.request')
     def test_run(self, mock_request):
         """Test asynchronous task execution"""
@@ -307,8 +271,6 @@ class TestServerlessEndpoint(unittest.TestCase):
         result = self.endpoint.get_status("test-job")
         self.assertEqual(result["code"], 20000)
         self.assertEqual(result["data"]["status"], "completed")
-<<<<<<< HEAD
-=======
         
     @patch('requests.request')
     def test_cancel(self, mock_request):
@@ -353,7 +315,6 @@ class TestServerlessEndpoint(unittest.TestCase):
         result = self.endpoint.get_requests()
         self.assertEqual(result["code"], 20000)
         self.assertIn("requests", result["data"])
->>>>>>> private-repo/main
 
 class TestAuth(unittest.TestCase):
     def setUp(self):

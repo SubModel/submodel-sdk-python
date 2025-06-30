@@ -19,77 +19,70 @@ tests/
 
 ## 测试环境设置
 
-### 1. 激活虚拟环境
-```powershell
-# Windows PowerShell
-.\submodel-env\Scripts\Activate.ps1
-
-# 或者直接使用完整路径
-.\submodel-env\Scripts\python.exe
-```
+### 1. 激活虚拟环境 或者直接使用python
 
 ### 2. 安装测试依赖
 ```powershell
-.\submodel-env\Scripts\python.exe -m pip install pytest pytest-asyncio pytest-cov
+python -m pip install pytest pytest-asyncio pytest-cov
 ```
 
 ## 基本测试命令
 
 ### 1. 运行所有测试
 ```powershell
-.\submodel-env\Scripts\python.exe -m pytest tests/
+python -m pytest tests/
 ```
 
 ### 2. 运行单个测试文件
 ```powershell
-.\submodel-env\Scripts\python.exe -m pytest tests/test_auth.py
+python -m pytest tests/test_auth.py
 ```
 
 ### 3. 运行特定测试函数
 ```powershell
-.\submodel-env\Scripts\python.exe -m pytest tests/test_auth.py::TestAuth::test_register
+python -m pytest tests/test_auth.py::TestAuth::test_register
 ```
 
 ### 4. 运行特定测试类
 ```powershell
-.\submodel-env\Scripts\python.exe -m pytest tests/test_auth.py::TestAuth
+python -m pytest tests/test_auth.py::TestAuth
 ```
 
 ## 高级测试选项
 
 ### 1. 详细输出 (-v)
 ```powershell
-.\submodel-env\Scripts\python.exe -m pytest tests/ -v
+python -m pytest tests/ -v
 ```
 
 ### 2. 显示测试覆盖率
 ```powershell
-.\submodel-env\Scripts\python.exe -m pytest tests/ --cov=submodel
+python -m pytest tests/ --cov=submodel
 ```
 
 ### 3. 生成HTML覆盖率报告
 ```powershell
-.\submodel-env\Scripts\python.exe -m pytest tests/ --cov=submodel --cov-report=html
+python -m pytest tests/ --cov=submodel --cov-report=html
 ```
 
 ### 4. 只收集测试，不运行
 ```powershell
-.\submodel-env\Scripts\python.exe -m pytest --collect-only tests/
+python -m pytest --collect-only tests/
 ```
 
 ### 5. 运行失败时立即停止
 ```powershell
-.\submodel-env\Scripts\python.exe -m pytest tests/ -x
+python -m pytest tests/ -x
 ```
 
 ### 6. 重新运行上次失败的测试
 ```powershell
-.\submodel-env\Scripts\python.exe -m pytest tests/ --lf
+python -m pytest tests/ --lf
 ```
 
 ### 7. 按关键字筛选测试
 ```powershell
-.\submodel-env\Scripts\python.exe -m pytest tests/ -k "auth"
+python -m pytest tests/ -k "auth"
 ```
 
 ## 异步测试
@@ -229,7 +222,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 ### 3. 运行单个测试进行调试
 ```powershell
-.\submodel-env\Scripts\python.exe -m pytest tests/test_auth.py::TestAuth::test_register -s -v
+python -m pytest tests/test_auth.py::TestAuth::test_register -s -v
 ```
 
 ## 性能测试
@@ -267,12 +260,12 @@ def test_performance(benchmark):
 
 ### 生成详细的HTML报告
 ```powershell
-.\submodel-env\Scripts\python.exe -m pytest tests/ --html=report.html --self-contained-html
+python -m pytest tests/ --html=report.html --self-contained-html
 ```
 
 ### 生成JUnit XML报告
 ```powershell
-.\submodel-env\Scripts\python.exe -m pytest tests/ --junitxml=report.xml
+python -m pytest tests/ --junitxml=report.xml
 ```
 
 ## 总结

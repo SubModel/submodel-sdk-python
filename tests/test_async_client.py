@@ -107,8 +107,6 @@ class TestAsyncClient(unittest.IsolatedAsyncioTestCase):
         # Verify session is closed
         self.assertIsNone(client._session)
 
-<<<<<<< HEAD
-=======
     def test_init_with_api_key(self):
         """Test initialization with API key"""
         client = AsyncSubModelClient(api_key="test-api-key")
@@ -361,6 +359,5 @@ class TestAsyncClient(unittest.IsolatedAsyncioTestCase):
         # Session should be cleaned up
         self.assertIsNone(client._session)
 
->>>>>>> private-repo/main
 if __name__ == '__main__':
     unittest.main()
