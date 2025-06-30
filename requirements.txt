@@ -1,0 +1,20 @@
+# SubModel SDK Core Dependencies
+# HTTP/Networking
+requests>=2.28.0  # Synchronous HTTP requests
+aiohttp>=3.8.0    # Asynchronous HTTP requests
+
+# Command Line Interface
+click>=8.0.0      # CLI framework
+
+# Utilities
+tqdm>=4.65.0      # Progress bar
+python-dotenv>=0.19.0  # Environment variables management
+
+# Serialization/Deserialization
+pydantic>=2.0.0   # Data validation and settings management
+
+# Time handling
+pytz>=2023.3      # Timezone support
+
+# OS Compatibility
+colorama>=0.4.4   # Windows terminal colors

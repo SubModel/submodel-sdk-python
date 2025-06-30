@@ -1,0 +1,2 @@
+[console_scripts]
+submodel = submodel.cli:cli
