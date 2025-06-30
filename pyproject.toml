@@ -1,0 +1,65 @@
+[project]
+name = "submodel-sdk-python"
+dynamic = ["version", "dependencies"]
+description = "Python library for Submodel API and serverless worker SDK."
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.8"
+license = { text = "MIT License" }
+authors = [
+    { name = "SubModel", email = "support@submodel.ai" },
+]
+keywords = [
+    "submodel",
+    "ai",
+    "gpu",
+    "serverless",
+    "SDK",
+    "API",
+    "python",
+    "library",
+]
+classifiers = [
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+
+[project.urls]
+Homepage = "https://submodel.ai"
+Documentation = "https://submodel.gitbook.io"
+Repository = "https://github.com/submodel/submodel-python"
+Changelog = "https://github.com/submodel/submodel-python/blob/main/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/submodel/submodel-python/issues"
+
+
+[tool.setuptools_scm]
+version_file = "submodel/_version.py"
+
+
+[project.scripts]
+submodel = "submodel.cli:cli"
+
+
+[project.optional-dependencies]
+test = [
+]
+
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+# Used by pytest coverage
+[tool.coverage.run]
+omit = ["submodel/_version.py",]

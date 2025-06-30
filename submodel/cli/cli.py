@@ -4,7 +4,6 @@ import sys
 import logging
 from typing import Optional
 
-# 使用绝对导入替代相对导入，使依赖关系更清晰
 from submodel import __version__
 from submodel.sdk.client import create_client
 from submodel.sdk.exceptions import SubModelError, AuthenticationError, APIError
