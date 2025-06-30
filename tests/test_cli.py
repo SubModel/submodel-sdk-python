@@ -1,9 +1,10 @@
-# filepath: c:\Users\artia\Desktop\python_sdk\submodel_sdk\tests\test_cli.py
 import unittest
 from unittest.mock import patch, MagicMock
 from click.testing import CliRunner
 from submodel.cli.cli import cli
 from submodel.sdk.exceptions import AuthenticationError, APIError
+
+#import submodel.cli.cli
 
 def create_mock_client():
     """Create mock client object"""

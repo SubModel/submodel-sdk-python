@@ -1,6 +1,6 @@
 import unittest
 import asyncio
-from unittest.mock import patch, AsyncMock
+from unittest.mock import patch, AsyncMock, Mock
 import aiohttp
 from submodel.sdk.async_client import AsyncSubModelClient, create_async_client
 from submodel.sdk.exceptions import AuthenticationError
@@ -24,6 +24,7 @@ class TestAsyncClient(unittest.IsolatedAsyncioTestCase):
             "code": 40100,
             "message": "Authentication failed"
         })
+        mock_response.raise_for_status = Mock()
         
         mock_context = AsyncMock()
         mock_context.__aenter__.return_value = mock_response
@@ -41,6 +42,7 @@ class TestAsyncClient(unittest.IsolatedAsyncioTestCase):
             "code": 20000,
             "data": "success"
         })
+        mock_response.raise_for_status = Mock()
         
         mock_context = AsyncMock()
         mock_context.__aenter__.return_value = mock_response
@@ -64,6 +66,7 @@ class TestAsyncClient(unittest.IsolatedAsyncioTestCase):
             "code": 20000,
             "data": "success"
         })
+        success_response.raise_for_status = Mock()
 
         # Mock error response
         error_response = AsyncMock()
@@ -93,6 +96,7 @@ class TestAsyncClient(unittest.IsolatedAsyncioTestCase):
             "code": 20000,
             "data": "success"
         })
+        mock_response.raise_for_status = Mock()
         
         mock_context = AsyncMock()
         mock_context.__aenter__.return_value = mock_response
@@ -182,6 +186,7 @@ class TestAsyncClient(unittest.IsolatedAsyncioTestCase):
             "code": 20000,
             "data": "success"
         })
+        success_response.raise_for_status = Mock()
         
         success_context = AsyncMock()
         success_context.__aenter__.return_value = success_response
@@ -233,6 +238,7 @@ class TestAsyncClient(unittest.IsolatedAsyncioTestCase):
             "code": 20000,
             "data": "post success"
         })
+        mock_response.raise_for_status = Mock()
         
         mock_context = AsyncMock()
         mock_context.__aenter__.return_value = mock_response
@@ -287,6 +293,7 @@ class TestAsyncClient(unittest.IsolatedAsyncioTestCase):
         mock_response = AsyncMock()
         mock_response.status = 200
         mock_response.json = AsyncMock(return_value={"code": 20000})
+        mock_response.raise_for_status = Mock()
         
         mock_context = AsyncMock()
         mock_context.__aenter__.return_value = mock_response
@@ -328,6 +335,7 @@ class TestAsyncClient(unittest.IsolatedAsyncioTestCase):
         mock_response = AsyncMock()
         mock_response.status = 200
         mock_response.json = AsyncMock(return_value={"code": 20000})
+        mock_response.raise_for_status = Mock()
         
         mock_context = AsyncMock()
         mock_context.__aenter__.return_value = mock_response

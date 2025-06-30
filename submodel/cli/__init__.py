@@ -5,6 +5,8 @@ SubModel CLI
 Command Line Interface for SubModel SDK
 """
 
-from .cli import cli
+#from .cli import cli
 
-__all__ = ["cli"]
+#__all__ = ["cli"]
+
+__all__ = []
